@@ -5,6 +5,7 @@ import { allFood } from "../libs/allFood.js";
 export default function Food() {
   // state that stores all meals from the API
   const [allMeals, setAllMeals] = useState([]);
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
     // const fetchRecipes = async () => {
@@ -25,7 +26,7 @@ export default function Food() {
       <h3>Our food menu</h3>
       {allMeals ? (
         allMeals.map((recipe) => {
-          return <FoodCard recipe={recipe} key={recipe.id} />;
+          return <FoodCard recipe={recipe} key={recipe.id} setCart={setCart} cart={cart} />;
         })
       ) : (
         <p>Is Loading...</p>
