@@ -1,34 +1,35 @@
-import {useState, useEffect} from 'react';
-import FoodCard from '../components/FoodCard.jsx';
+import { useState, useEffect } from "react";
+import FoodCard from "../components/FoodCard.jsx";
+import { allFood } from "../libs/allFood.js";
 
-export default  function Food () {
-	// state that stores all meals from the API
-	const [allMeals, setAllMeals] = useState([])
+export default function Food() {
+  // state that stores all meals from the API
+  const [allMeals, setAllMeals] = useState([]);
 
-	useEffect(() => {
-		const fetchRecipes = async () => {
-			const api = await fetch(
-				`https://api.spoonacular.com/recipes/informationBulk?ids=663157,663126,663166,663113,645541,663151,663108,645474,663078&apiKey=${process.env.REACT_APP_API_KEY}`
-			)
-			const data = await api.json()
+  useEffect(() => {
+    // const fetchRecipes = async () => {
+    // 	const api = await fetch(
+    // 		`https://api.spoonacular.com/recipes/informationBulk?ids=663157,663126,663166,663113,645541,663151,663108,645474,663078&apiKey=${process.env.REACT_APP_API_KEY}`
+    // 	)
+    // 	const data = await api.json()
 
-			setAllMeals(data)
-			console.log(data)
-		}
-		fetchRecipes()
-	}, [])
+    // 	setAllMeals(data)
+    // 	console.log(data)
+    // }
+    // fetchRecipes()
+    setAllMeals(allFood);
+  }, []);
 
-	return (
-		<div>
-			<h3>Our food menu</h3>
-			{allMeals ? (
-				allMeals.map((recipe) => {
-					return <FoodCard recipe={recipe}/>
-				})
-			) : (
-            <p>Is Loading...</p>
-		
-			)}
-		</div>
-	)
+  return (
+    <div>
+      <h3>Our food menu</h3>
+      {allMeals ? (
+        allMeals.map((recipe) => {
+          return <FoodCard recipe={recipe} key={recipe.id} />;
+        })
+      ) : (
+        <p>Is Loading...</p>
+      )}
+    </div>
+  );
 }
