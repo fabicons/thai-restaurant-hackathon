@@ -6,10 +6,16 @@ import NavBar from "./components/NavBar.jsx";
 import Footer from "./components/Footer.jsx";
 import "./index.css";
 import Cart from "./pages/Cart.jsx";
+import CartContext from "./components/CartContext.jsx";
+import { useState } from "react";
+
 
 function App() {
+  const [cart, setCart] = useState([])
+  
   return (
     <div className="App">
+    <CartContext.Provider value={[cart, setCart]}>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -19,6 +25,7 @@ function App() {
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>
+      </CartContext.Provider>
     </div>
   );
 }
