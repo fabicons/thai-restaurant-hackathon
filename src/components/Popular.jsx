@@ -10,7 +10,7 @@ function Popular() {
   useEffect(() => {
     const fetchRecipes = async () => {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?cuisine=thai&number=22&apiKey=${process.env.REACT_APP_API_KEY}`
+        `https://api.spoonacular.com/recipes/informationBulk?ids=663157,663126,663166,663113,645541,663151,663108,645474,663078&apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const data = await api.json();
 
