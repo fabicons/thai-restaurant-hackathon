@@ -1,10 +1,14 @@
-import React from 'react'
-import Home from './Home'
+import React from "react";
+import Home from "./Home";
+import NavBar from "../components/NavBar";
 
 function Pages() {
   return (
-    <Home/>
-  )
+    <>
+      <NavBar />
+      <Home />
+    </>
+  );
 }
 
-export default Pages
+export default Pages;
