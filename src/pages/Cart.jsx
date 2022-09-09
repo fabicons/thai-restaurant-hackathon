@@ -1,7 +1,9 @@
+import ShoppingCart from "../components/ShoppingCart";
+
 function Cart() {
   return (
     <div>
-      <h1>Cart</h1>
+    <ShoppingCart/>
     </div>
   );
 }
