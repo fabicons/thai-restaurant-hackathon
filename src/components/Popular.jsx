@@ -4,7 +4,8 @@ import { Splide, SplideSlide, SplideStyle } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 function Popular() {
-  const [popular, setPopular] = useState([]);
+  // state that stores all meals from the API
+  const [allMeals, setAllMeals] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -13,8 +14,8 @@ function Popular() {
       );
       const data = await api.json();
 
-      setPopular(data.results);
-      console.log(data.results);
+      setAllMeals(data);
+      console.log(data);
     };
     fetchRecipes();
   }, []);
@@ -23,8 +24,8 @@ function Popular() {
     <div>
       <Wrapper>
         <h3>Our menu</h3>
-        {popular ? (
-          popular.map((recipe) => {
+        {allMeals ? (
+          allMeals.map((recipe) => {
             return <p>{recipe.title}</p>;
           })
         ) : (
