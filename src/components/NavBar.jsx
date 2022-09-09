@@ -7,7 +7,7 @@ import styled from "styled-components";
 function NavBar() {
   return (
     <Nav>
-      <Link to="/home">
+      <Link to="/">
         <AiOutlineHome />
       </Link>
       <Link to="/food">
