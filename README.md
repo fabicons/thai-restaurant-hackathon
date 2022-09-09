@@ -1,1 +1,1 @@
-# thai-restaurant-hackathon
+# React-Thai-Restaurant
