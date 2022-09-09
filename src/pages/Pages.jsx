@@ -1,14 +1,16 @@
-import React from 'react'
-import Home from './Home'
-import Food from './Food.jsx'
+
+import React from "react";
+import Home from "./Home";
+import NavBar from "../components/NavBar";
 
 function Pages() {
-	return (
-		<div>
-			<Home />
-			<Food />
-		</div>
-	)
+  return (
+    <>
+      <NavBar />
+      <Home />
+    </>
+  );
 }
 
-export default Pages
+export default Pages;
+

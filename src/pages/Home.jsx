@@ -1,12 +1,16 @@
-import Popular from "../components/Popular";
+
+import HomePage from "../components/HomePage";
+
 
 
 function Home() {
   return (
     <div>
-        <Popular/>
+      <nav></nav>
+      <HomePage />
+      <footer></footer>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
