@@ -1,12 +1,13 @@
 import { BsCart4 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function NavBar() {
   return (
     <Nav>
-      <a href="">
+      <Link to="/cart">
         <BsCart4 />
-      </a>
+      </Link>
     </Nav>
   );
 }
