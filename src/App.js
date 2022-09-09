@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Food from "./pages/Food.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Footer from './components/Footer.jsx'
+import "./index.css"
 
 function App() {
   return (
