@@ -4,56 +4,33 @@ import { Splide, SplideSlide, SplideStyle } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 function Popular() {
-  const [popular, setPopular] = useState([]);
+  // state that stores all meals from the API
+  const [allMeals, setAllMeals] = useState([]);
 
   useEffect(() => {
-    getPopular();
-  }, [popular]);
-
-  const getPopular = async () => {
-    const check = localStorage.getItem("popular");
-
-    if (check) {
-      setPopular(JSON.parse(check));
-    } else {
+    const fetchRecipes = async () => {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=66ddb70a62124675ab47efe7b1f461ba&number=9`
+        `https://api.spoonacular.com/recipes/informationBulk?ids=663157,663126,663166,663113,645541,663151,663108,645474,663078&apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const data = await api.json();
 
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
+      setAllMeals(data);
       console.log(data);
-      setPopular(data.recipes);
-      console.log(data.recipes);
-    }
-  };
+    };
+    fetchRecipes();
+  }, []);
 
   return (
     <div>
       <Wrapper>
-        <h3>Trending</h3>
-        <Splide
-          options={{
-            perPage: 4,
-            arrows: false,
-            pagination: false,
-            drag: "free",
-            gap: "5rem",
-          }}
-        >
-          {popular.map((recipe) => {
-            return (
-              <SplideSlide key={recipe.id}>
-                <Card>
-                  <p>{recipe.title}</p>
-                  <img src={recipe.image} alt={recipe.title} />
-                  <p></p>
-                  <Gradient />
-                </Card>
-              </SplideSlide>
-            );
-          })}
-        </Splide>
+        <h3>Our menu</h3>
+        {allMeals ? (
+          allMeals.map((recipe) => {
+            return <p>{recipe.title}</p>;
+          })
+        ) : (
+          <p>Loading...</p>
+        )}
       </Wrapper>
     </div>
   );
